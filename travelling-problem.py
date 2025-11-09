@@ -1,15 +1,15 @@
 name=input("Name of the passenger: ")
 distance=float(input("Distance to travel(in kilometres ): "))
 vehicle=int(input("Enter your vehicle type(1:Bike, 2:Car, 3:Bus): "))
-def type_of_vehicle(vehicle):
-    if(vehicle==1):
-        return "Bike"
-    elif(vehicle==2):
-        return "Car"
-    else:
-        return "Bus"
-    
-
+if(vehicle==1):
+        type= "Bike"
+elif(vehicle==2):
+        type= "Car"
+elif(vehicle==3):
+        type= "Bus"
+else:
+        type= "Invalid vehicle type"   
+        
 def fare(vehicle,distance):
     if (vehicle==1):
         if (0<distance<50):
@@ -25,13 +25,15 @@ def fare(vehicle,distance):
            return 9*distance
         else:
            return 8*distance
-    else:
+    elif(vehicle==3):
         if (distance<50):
            return 8*distance
         elif (distance>=50) and (distance<=200):
            return 7*distance
         else:
            return 6*distance
+    else:
+        return 0
         
 if (fare(vehicle, distance)>=1500):
     discount=fare(vehicle, distance)*0.05
@@ -46,13 +48,17 @@ else:
     suggestions="You can proceed with your current vehicle choice."
 
 
-print("Passenger Name:",name)
-print("Vehicle Type:",type_of_vehicle(vehicle))
-print("Distance traveled:", distance, "km")
-print("Base fare:₹",fare(vehicle, distance))
-print("Discount applied:₹",discount)
-print("Full amount payable:₹",t_fare)
-print("Any travel suggestions:",suggestions)
+
+if type=="Invalid vehicle type":
+    print("Please enter a valid vehicle type(1:Bike, 2:Car, 3:Bus)")
+else:
+    print("Passenger Name:",name)
+    print("Vehicle Type:",type)
+    print("Distance traveled:", distance, "km")
+    print("Base fare:₹",fare(vehicle, distance))
+    print("Discount applied(5%):₹",discount)
+    print("Full amount payable:₹",t_fare)
+    print("Any travel suggestions:",suggestions)
 
     
     
